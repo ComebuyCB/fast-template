@@ -1,0 +1,10 @@
+
+/*** ====== public css ====== ***/
+    :root {
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif; }
+
+    #wrap { display: flex; flex-direction: column; min-height: 100vh; margin-left: auto; margin-right: auto; }
+    main { flex-grow: 1; background-color: #aaa; }
