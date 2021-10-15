@@ -1,5 +1,4 @@
-
-/*** ====== public css ====== ***/
+/*** ###### Default Css ###### ***/
     :root {
     }
 
@@ -7,4 +6,33 @@
     body { font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif; }
 
     #wrap { display: flex; flex-direction: column; min-height: 100vh; margin-left: auto; margin-right: auto; }
-    main { flex-grow: 1; background-color: #aaa; }
+    main { flex-grow: 1; }
+
+
+/*** ###### Plugins ###### ***/
+/***=== Modify Plugins 修改套件樣式 ===***/
+    /*=== 例如: Bootstrap、Swiper... ===*/
+
+/***=== Self-made Plugins 自製套件樣式，JS必定參與 ===***/
+    /*=== 例如: js-drag-img、js-follow-btn... ===*/
+
+
+
+/*** ###### Public Css ###### ***/
+/*** === Simple Css 單一樣式，通常套用一行結束 === ***/
+    /*=== 例如: box model、color、font... ===*/
+
+/*** === Components 單一元件，通常少少幾行結束 === ***/
+    /*=== 例如: btn、checkbox、paper... ===*/
+
+/*** === Templates 多物件組合，通常用到兩頁以上，都會提取至此 === ***/
+    /*=== 例如: mainTable、dateBox、authForm... ===*/
+
+
+
+/*** ###### Pages ###### ***/
+/*** === Include Page === ***/
+    /*=== 例如: header、#modal、footer... ===*/
+
+/*** === Current Page === ***/
+    /*=== 例如: #index、#login、#about... ===*/
