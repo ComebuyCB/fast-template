@@ -59,6 +59,9 @@
   /*====== [Simple Css] ======*/
     /*=== typesetting ===*/
       .h-100vh { height: var(--100vh); }
+    
+    /*=== font ===*/
+    /*=== color ===*/
 
 
   /*====== [Components] ======*/
@@ -67,6 +70,7 @@
 
   /*====== [Templates] ======*/
     /*=== banner ===*/
+
 
 
 /*######### [Pages] #########*/
