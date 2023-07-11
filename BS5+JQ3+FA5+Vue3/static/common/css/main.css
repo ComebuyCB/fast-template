@@ -34,7 +34,7 @@ Structure instruction：
     /*====== [Structure] ======*/
         html { scroll-behavior: smooth; }
         body { font-family: var(--ff-default), 'Microsoft JhengHei', sans-serif; }
-        #wrap { display: flex; flex-direction: column; min-height: var(--100vh); margin-left: auto; margin-right: auto; }
+        #wrap { display: flex; flex-direction: column; margin-inline: auto; min-height: var(--100vh); }
         main { flex-grow: 1; }
 
 
@@ -60,16 +60,16 @@ Structure instruction：
         /*=== typesetting ===*/
             .h-100vh { height: var(--100vh); }
     
-        /*=== font ===*/
         /*=== color ===*/
+        /*=== font ===*/
 
 
-    /*====== [Components] ======*/
+    /*====== [Elements] ======*/
         /*=== button ===*/
 
 
-    /*====== [Templates] ======*/
-        /*=== banner ===*/
+    /*====== [Components] ======*/
+        /*=== rwd_table ===*/
 
 
 
