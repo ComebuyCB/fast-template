@@ -12,7 +12,7 @@ Structure instruction：
     # [Public Style]
         - [Simple Css]: typesetting, color ... ( Single Css )
         - [Elements]: button, checkbox, icon ... ( Simple Component )
-        - [Components]: RWD_table, user_card ... ( Complex Components )
+        - [Components]: RWD_table, user_avatar ... ( Complex Components )
 
     # [Pages]
         - [Include Page]: header, footer
@@ -26,19 +26,29 @@ Structure instruction：
 /*######### [Default Css] #########*/
     /*====== [Root Css] ======*/
         :root {
-            --100vh: 100vh;
+            /* color */
+            --c-primary: #0d6efd;
+            --c-primary-hover: #0b5ed7;
+            --c-secondary: ;
+
+            /* font */
             --ff-default: 'Noto Sans TC';
+            --fs-h1: ;
+            --fs-h2: ;
+            --fs-h3: ;
+            --fs-p: ;
+            --fs-btn: ;
         }
 
 
     /*====== [Structure] ======*/
         html { scroll-behavior: smooth; }
         body { font-family: var(--ff-default), 'Microsoft JhengHei', sans-serif; }
-        #wrap { display: flex; flex-direction: column; margin-inline: auto; min-height: var(--100vh); }
+        #wrap { display: flex; flex-direction: column; margin-inline: auto; min-height: 100vh; min-height: 100dvh; }
         main { flex-grow: 1; }
 
 
-    /*====== [Default Html] =======*/
+    /*====== [HtmlTag] =======*/
         a { color: var(--bs-dark); text-decoration: none; }
         a:hover { color: inherit; text-decoration: none; }
         label { margin-bottom: 0; }
@@ -48,6 +58,45 @@ Structure instruction：
 /*######### [Plugins] #########*/
     /*====== [Plugins Modified] ======*/
         /*=== Bootstrap ===*/
+            .btn { 
+                --bs-btn-focus-box-shadow: transparent; /* 如果不要shadow */ 
+                display: inline-flex; align-items: center; justify-content: center; font-size: var(--fs-btn); 
+            }
+
+            [class*="btn_"] {
+                --default-color: ; --default-bg: ;
+                --hover-color: ; --hover-bg: ;
+                --bs-btn-color: var(--default-color); --bs-btn-bg: var(--default-bg); --bs-btn-border-color: var(--default-bg);
+                --bs-btn-disabled-color: var(--default-color); --bs-btn-disabled-bg: var(--default-bg); --bs-btn-disabled-border-color: var(--default-bg);
+                --bs-btn-hover-color: var(--hover-color); --bs-btn-hover-bg: var(--hover-bg); --bs-btn-hover-border-color: var(--hover-bg);
+                --bs-btn-active-color: var(--hover-color); --bs-btn-active-bg: var(--hover-bg); --bs-btn-active-border-color: var(--hover-bg);
+            }
+            [class*="btn_outline_"] {
+                --default-color: ; --default-bg: ;
+                --hover-color: ; --hover-bg: ;
+                --bs-btn-color: var(--default-color); --bs-btn-bg: transparent; --bs-btn-border-color: var(--default-color);
+                --bs-btn-disabled-color: var(--default-color); --bs-btn-disabled-bg: transparent; --bs-btn-disabled-border-color: var(--default-color);
+                --bs-btn-hover-color: var(--hover-color); --bs-btn-hover-bg: var(--hover-bg); --bs-btn-hover-border-color: var(--hover-bg);
+                --bs-btn-active-color: var(--hover-color); --bs-btn-active-bg: var(--hover-bg); --bs-btn-active-border-color: var(--hover-bg);
+            }
+
+            .btn_custom { --default-bg: #e75a23; --default-color: white; --hover-bg: #bb4112; --hover-color: white; }
+            .btn_outline_custom { --default-bg: white; --default-color: #e75a23; --hover-bg: #e75a23; --hover-color: white; }
+
+            .btn_active_darker {
+                --bs-btn-hover-border-color: color-mix(in srgb, var(--bs-btn-hover-bg), black 6%);
+                --bs-btn-active-bg: color-mix(in srgb, var(--bs-btn-hover-bg), black 6%);
+                --bs-btn-active-border-color: color-mix(in srgb, var(--bs-btn-hover-bg), black 12%);
+            }
+            .btn_active_lighter {
+                --bs-btn-hover-border-color: color-mix(in srgb, var(--bs-btn-hover-bg), white 6%);
+                --bs-btn-active-bg: color-mix(in srgb, var(--bs-btn-hover-bg), white 6%);
+                --bs-btn-active-border-color: color-mix(in srgb, var(--bs-btn-hover-bg), white 0%);
+            }
+
+            .btn { position: relative; }
+            .btn.active::after { content: '_'; display: block; position: absolute; bottom: 0px; left: calc(50% - 0.25em); }
+
 
 
     /*====== [Plugins SelfMade] ======*/
@@ -58,14 +107,13 @@ Structure instruction：
 /*######### [Public Style] #########*/
     /*====== [Simple Css] ======*/
         /*=== typesetting ===*/
-            .h-100vh { height: var(--100vh); }
-    
         /*=== color ===*/
         /*=== font ===*/
 
 
     /*====== [Elements] ======*/
         /*=== button ===*/
+        /*=== checkbox ===*/
 
 
     /*====== [Components] ======*/
@@ -76,7 +124,27 @@ Structure instruction：
 /*######### [Pages] #########*/
     /*====== [Include Page] ======*/
         /*=== header ===*/
+        /*=== footer ===*/
 
 
     /*====== [Current Page] ======*/
         /*=== index ===*/
+
+
+
+
+
+/*###### [Note] ######*/
+/* Mobile() -> PC */
+    @media (width >= 576px){} /* sm */
+    @media (width >= 768px){} /* md */
+    @media (width >= 992px){} /* lg */
+    @media (width >= 1200px){} /* xl */
+    @media (width >= 1400px){} /* xxl */
+
+/* PC(xxl) -> Mobile */
+    @media (width < 1400px){} /* xl */
+    @media (width < 1200px){} /* lg */
+    @media (width < 992px){} /* md */
+    @media (width < 768px){} /* sm */
+    @media (width < 576px){} /*  */
