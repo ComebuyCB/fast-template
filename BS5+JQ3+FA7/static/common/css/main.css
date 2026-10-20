@@ -1,38 +1,39 @@
 /*
 Structure instruction：
     # [Default Css]
-        - [Root Css]: :root { ... }
-        - [Structure]: html, body, main, #wrap ...
-        - [HtmlTag]: h1, a, ::-webkit-scrollbar ...
+        - [Root Css]        :root { ... }
+        - [Structure]       html, body, main, #wrap ...
+        - [HtmlTag]         h1, a, ::-webkit-scrollbar ...
 
     # [Plugins]
-        - [Plugins Modified]: Bootstrap Modals...
-        - [Plugins SelfMade]: My Modals...
+        - [Third-Party]     Bootstrap, swiper ...             ( 覆寫第三方 )
+        - [In-House]        My Modals ...                     ( 自製套件 )
 
     # [Public Style]
-        - [Simple Css]: typesetting, color ... ( Single Css )
-        - [Elements]: button, checkbox, icon ... ( Simple Component )
-        - [Components]: RWD_table, user_avatar ... ( Complex Components )
+        - [Utilities]       c_, bg_, fs_, text_more ...       ( 只改一個面向 )
+        - [Layouts]         container_, max_w_, ch_mb_ ...    ( 只管排列、間距、尺寸 )
+        - [Base Elements]   btn, badge, alink, list ...       ( 單一元素 )
+        - [Components]      rwd_table, editor_container ...   ( 有子元素結構 )
 
     # [Pages]
-        - [Include Page]: header, footer
-        - [Current Page]: #login, #about
+        - [Page Slots]      breadcrumb, banner_title ...      ( 固定位置，可有可無 )
+        - [Layout Pages]    header, footer ...                ( 每頁必有 )
+        - [Current Pages]   #login, #about ...                ( 單頁專用 )
 
     -- Author Comebuy
 */
-
-@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap);
 
 /*######### [Default Css] #########*/
     /*====== [Root Css] ======*/
         :root {
             /* color */
-            --c-primary: #0d6efd;
-            --c-primary-hover: #0b5ed7;
+            --c-primary: #fd7e14;
+            --c-primary-hover: #d76b11;
             --c-secondary: ;
 
             /* font */
             --ff-default: 'Noto Sans TC';
+            --ff-roboto: 'Roboto';
             --fs-h1: ;
             --fs-h2: ;
             --fs-h3: ;
@@ -40,79 +41,85 @@ Structure instruction：
             --fs-btn: ;
         }
 
+        /* 暗色主題色票：目前沿用亮色值，依設計稿調整 */
+        [data-bs-theme="dark"] {
+            --c-primary: #fd7e14;
+            --c-primary-hover: #d76b11;
+        }
+
 
     /*====== [Structure] ======*/
         html { scroll-behavior: smooth; }
-        body { font-family: var(--ff-default), 'Microsoft JhengHei', sans-serif; }
+        body { font-family: var(--ff-default), var(--ff-roboto), 'Microsoft JhengHei', sans-serif; }
         #wrap { display: flex; flex-direction: column; margin-inline: auto; min-height: 100vh; min-height: 100dvh; }
         main { flex-grow: 1; }
 
 
     /*====== [HtmlTag] =======*/
-        a { color: var(--bs-dark); text-decoration: none; }
+        a { color: var(--bs-body-color); text-decoration: none; }
         a:hover { color: inherit; text-decoration: none; }
         label { margin-bottom: 0; }
 
 
 
 /*######### [Plugins] #########*/
-    /*====== [Plugins Modified] ======*/
+    /*====== [Third-Party] ======*/
         /*=== Bootstrap ===*/
-            .btn { 
+            .btn {
                 --bs-btn-focus-box-shadow: transparent; /* 如果不要shadow */ 
                 display: inline-flex; align-items: center; justify-content: center; font-size: var(--fs-btn); 
             }
 
             [class*="btn_"] {
-                --default-color: ; --default-bg: ;
-                --hover-color: ; --hover-bg: ;
+                --default-color: ; --default-bg: ; --hover-color: ; --hover-bg: ;
+                --active-mix: black;
+                --active-bg: color-mix(in srgb, var(--hover-bg), var(--active-mix) 8%);
+                --active-border: color-mix(in srgb, var(--hover-bg), var(--active-mix) 16%);
                 --bs-btn-color: var(--default-color); --bs-btn-bg: var(--default-bg); --bs-btn-border-color: var(--default-bg);
                 --bs-btn-disabled-color: var(--default-color); --bs-btn-disabled-bg: var(--default-bg); --bs-btn-disabled-border-color: var(--default-bg);
                 --bs-btn-hover-color: var(--hover-color); --bs-btn-hover-bg: var(--hover-bg); --bs-btn-hover-border-color: var(--hover-bg);
-                --bs-btn-active-color: var(--hover-color); --bs-btn-active-bg: var(--hover-bg); --bs-btn-active-border-color: var(--hover-bg);
+                --bs-btn-active-color: var(--hover-color); --bs-btn-active-bg: var(--active-bg); --bs-btn-active-border-color: var(--active-border);
             }
             [class*="btn_outline_"] {
-                --default-color: ; --default-bg: ;
-                --hover-color: ; --hover-bg: ;
-                --bs-btn-color: var(--default-color); --bs-btn-bg: transparent; --bs-btn-border-color: var(--default-color);
-                --bs-btn-disabled-color: var(--default-color); --bs-btn-disabled-bg: transparent; --bs-btn-disabled-border-color: var(--default-color);
-                --bs-btn-hover-color: var(--hover-color); --bs-btn-hover-bg: var(--hover-bg); --bs-btn-hover-border-color: var(--hover-bg);
-                --bs-btn-active-color: var(--hover-color); --bs-btn-active-bg: var(--hover-bg); --bs-btn-active-border-color: var(--hover-bg);
+                --bs-btn-border-color: var(--default-color);
+                --bs-btn-disabled-border-color: var(--default-color);
             }
 
-            .btn_custom { --default-bg: #e75a23; --default-color: white; --hover-bg: #bb4112; --hover-color: white; }
-            .btn_outline_custom { --default-bg: white; --default-color: #e75a23; --hover-bg: #e75a23; --hover-color: white; }
-
-            .btn_active_darker {
-                --bs-btn-hover-border-color: color-mix(in srgb, var(--bs-btn-hover-bg), black 6%);
-                --bs-btn-active-bg: color-mix(in srgb, var(--bs-btn-hover-bg), black 6%);
-                --bs-btn-active-border-color: color-mix(in srgb, var(--bs-btn-hover-bg), black 12%);
-            }
-            .btn_active_lighter {
-                --bs-btn-hover-border-color: color-mix(in srgb, var(--bs-btn-hover-bg), white 6%);
-                --bs-btn-active-bg: color-mix(in srgb, var(--bs-btn-hover-bg), white 6%);
-                --bs-btn-active-border-color: color-mix(in srgb, var(--bs-btn-hover-bg), white 0%);
-            }
-
-            .btn { position: relative; }
-            .btn.active::after { content: '_'; display: block; position: absolute; bottom: 0px; left: calc(50% - 0.25em); }
+            .btn_primary { --default-bg: var(--c-primary); --default-color: white; --hover-bg: var(--c-primary-hover); --hover-color: white; --active-mix: black; }
+            .btn_outline_primary { --default-bg: transparent; --default-color: var(--c-primary); --hover-bg: var(--c-primary); --hover-color: white; --active-mix: white; }
+            .btn_outline_body_primary { --default-bg: var(--bs-body-bg); --default-color: var(--c-primary); --hover-bg: var(--c-primary); --hover-color: white; --active-mix: white; }
 
 
 
-    /*====== [Plugins SelfMade] ======*/
-        /*=== js- ===*/
+    /*====== [In-House] ======*/
+        /*=== wl_comp ===*/
 
 
 
 /*######### [Public Style] #########*/
-    /*====== [Simple Css] ======*/
-        /*=== typesetting ===*/
+    /*====== [Utilities] ======*/
         /*=== color ===*/
+            .c_primary { color: var(--c-primary) !important; }
+            .bg_primary { background-color: var(--c-primary) !important; }
+
         /*=== font ===*/
 
 
-    /*====== [Elements] ======*/
-        /*=== button ===*/
+    /*====== [Layouts] ======*/
+        /*=== flex ===*/
+            .flex_center { display: flex; align-items: center; justify-content: center; }
+            .flex_center_a { display: flex; align-items: center; }
+
+        /*=== size ===*/
+            .size_20 { width: 20px !important; height: 20px !important; }
+
+
+    /*====== [Base Elements] ======*/
+        /*=== icon ===*/
+            .maskIcon { --size: 24px; display: inline-block; flex-shrink: 0; width: var(--size); height: var(--size); background-color: currentColor; -webkit-mask: var(--icon) no-repeat center / contain; mask: var(--icon) no-repeat center / contain; }
+            .maskIcon_home { --icon: url(../img/home.svg); }
+
+
         /*=== checkbox ===*/
 
 
@@ -122,12 +129,16 @@ Structure instruction：
 
 
 /*######### [Pages] #########*/
-    /*====== [Include Page] ======*/
+    /*====== [Page Slots] ======*/
+        /*=== breadcrumb ===*/
+
+
+    /*====== [Layout Pages] ======*/
         /*=== header ===*/
         /*=== footer ===*/
 
 
-    /*====== [Current Page] ======*/
+    /*====== [Current Pages] ======*/
         /*=== index ===*/
 
 
@@ -147,4 +158,4 @@ Structure instruction：
     @media (width < 1200px){} /* lg */
     @media (width < 992px){} /* md */
     @media (width < 768px){} /* sm */
-    @media (width < 576px){} /*  */
+    @media (width < 576px){} /* xs */
