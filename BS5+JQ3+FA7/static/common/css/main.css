@@ -87,7 +87,7 @@ Structure instruction：
 
             .btn_primary { --default-bg: var(--c-primary); --default-color: white; --hover-bg: var(--c-primary-hover); --hover-color: white; --active-mix: black; }
             .btn_outline_primary { --default-bg: transparent; --default-color: var(--c-primary); --hover-bg: var(--c-primary); --hover-color: white; --active-mix: white; }
-            .btn_outline_body_primary { --default-bg: var(--bs-body-bg); --default-color: var(--c-primary); --hover-bg: var(--c-primary); --hover-color: white; --active-mix: white; }
+            .btn_outline_body_primary { --default-bg: var(--bs-body-bg); --default-color: var(--c-primary); --hover-bg: var(--c-primary); --hover-color: white; --active-mix: black; }
 
 
 
@@ -117,7 +117,7 @@ Structure instruction：
     /*====== [Base Elements] ======*/
         /*=== icon ===*/
             .maskIcon { --size: 24px; display: inline-block; flex-shrink: 0; width: var(--size); height: var(--size); background-color: currentColor; -webkit-mask: var(--icon) no-repeat center / contain; mask: var(--icon) no-repeat center / contain; }
-            .maskIcon_home { --icon: url(../img/home.svg); }
+            .maskIcon_home { --size: 16px; --icon: url(../img/home.svg); }
 
 
         /*=== checkbox ===*/
